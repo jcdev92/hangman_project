@@ -8,36 +8,38 @@ def clear(): #También la podemos llamar cls (depende a lo que estemos acostumbr
         os.system ("cls")    
 
 
-def word():
+def words():
     with open('./WORDS/words.txt', 'r') as f:
-        words = list(map(lambda w: w.rstrip('\n'), f))
-    word = random.choice(words)
+        palabras = list(map(lambda w: w.rstrip('\n'), f))
+    word = random.choice(palabras)
     guion = ''
-    
+    data = ''
     for x in word:
         guion += '-'
     print(guion, end=' ')
     enter = input('\nIngrese una letra: ')
     clear()
     
-    while enter != x:
+    while guion != word:
         print(guion, end=' ')
         enter = input('\ningrese una letra: ')
+        for y in word:
+            if enter == y:
+                s = guion
+                l = list(s)
+                l[2] = enter
+                s = "".split(y)
         clear()
     else:
-        for i in range(guion.length()):
-            s = guion
-            l = list(s)
-            l[guion] = enter
-            s = "".join(l)
-            print(s, end=' ')
+        print(guion, end=' ')
+        
     
     
 
 
 
 def run():
-    word()
+    words()
 
 if __name__ == '__main__':
     run()
