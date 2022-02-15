@@ -1,7 +1,7 @@
 import random
 import os
 
-def clear(): #También la podemos llamar cls (depende a lo que estemos acostumbrados)
+def clear():                                       #También la podemos llamar cls (depende a lo que estemos acostumbrados)
     if os.name == "posix":
         os.system ("clear")
     elif os.name == ("ce", "nt", "dos"):
@@ -13,29 +13,24 @@ def words():
         palabras = list(map(lambda w: w.rstrip('\n'), f))
     word = random.choice(palabras)
     guion = ''
-    data = ''
     for x in word:
-        guion += '-'
-    print(guion, end=' ')
-    enter = input('\nIngrese una letra: ')
-    clear()
-    
+        guion += '-' 
+        
     while guion != word:
-        print(guion, end=' ')
-        enter = input('\ningrese una letra: ')
-        for y in word:
-            if enter == y:
-                s = guion
-                l = list(s)
-                l[2] = enter
-                s = "".split(y)
-        clear()
+            print(guion, end=' ')
+            enter = str(input('\nIngrese una letra: '))
+            for z in word:
+                if enter == z:
+                    y = word.find(z)
+                    w = word.find(z, y+1)
+                    l = list(guion)
+                    l[y] = z
+                    l[w] = z
+                    guion = "".join(l)
+                clear()
     else:
         print(guion, end=' ')
-        
-    
-    
-
+        print('Felicidades Ganaste!!')
 
 
 def run():
