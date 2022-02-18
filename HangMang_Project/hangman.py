@@ -15,24 +15,28 @@ def words():
     guion = ''
     for x in word:
         guion += '-' 
-        
-    while guion != word:
+    lose = 'ahorcado'
+    loser = ''
+    if guion != word:
             print(guion, end=' ')
-            enter = str(input('\nIngrese una letra: '))
+            while True:
+                enter = input('\nIngrese una letra: ')
+                if len(enter) == 1:
+                    break
+                else: 
+                    print('\nsolo se puede ingresar una letra por intento, intentelo de nuevo\n')
             for z in word:
                 y = word.find(z)
-                w = word.find(z, y+1)
+                w = word.find(z, y)
                 if enter == z:
                     l = list(guion)
                     l[y] = enter
                     l[w] = enter
                     guion = "".join(l)
-            clear()
-    else:
+                    clear()     
+    elif guion == word:
         print(guion, end=' ')
         print('Felicidades Ganaste!!')
-        clear()
-
 
 def run():
     words()
