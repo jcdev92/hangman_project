@@ -20,17 +20,18 @@ def words():
             print(guion, end=' ')
             enter = str(input('\nIngrese una letra: '))
             for z in word:
+                y = word.find(z)
+                w = word.find(z, y+1)
                 if enter == z:
-                    y = word.find(z)
-                    w = word.find(z, y+1)
                     l = list(guion)
-                    l[y] = z
-                    l[w] = z
+                    l[y] = enter
+                    l[w] = enter
                     guion = "".join(l)
-                clear()
+            clear()
     else:
         print(guion, end=' ')
         print('Felicidades Ganaste!!')
+        clear()
 
 
 def run():

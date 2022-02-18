@@ -17,17 +17,22 @@ def words():
         guion += '-' 
         
     while guion != word:
-            print(guion, end=' ')
-            enter = str(input('\nIngrese una letra: '))
-            for z in word:
-                if enter == z:
-                    y = word.find(z)
-                    w = word.find(z, y+1)
-                    l = list(guion)
-                    l[y] = z
-                    l[w] = z
-                    guion = "".join(l)
-                clear()
+        print(guion, end=' ')
+        enter = str(input('\nIngrese una letra: '))
+        lista = []
+        for r in word:
+            lista += r.split()
+        for i in lista:
+            if i == enter:
+                y = lista.find(i)
+                w = lista.find(i, y+1)
+                l = list(guion)
+                l[y] = i
+                l[w] = i
+                guion = "".join(l)
+            clear()      
+
+
     else:
         print(guion, end=' ')
         print('Felicidades Ganaste!!')
