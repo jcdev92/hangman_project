@@ -12,29 +12,22 @@ def words():
     with open('./WORDS/words.txt', 'r') as f:
         palabras = list(map(lambda w: w.rstrip('\n'), f))
     word = random.choice(palabras)
-    guion = ''
-    for x in word:
-        guion += '-' 
-    lose = 'ahorcado'
-    loser = ''
-    if guion != word:
-            print(guion, end=' ')
-            while True:
-                enter = input('\nIngrese una letra: ')
-                if len(enter) == 1:
-                    break
-                else: 
-                    print('\nsolo se puede ingresar una letra por intento, intentelo de nuevo\n')
-            for z in word:
-                y = word.find(z)
-                w = word.find(z, y)
-                if enter == z:
-                    l = list(guion)
-                    l[y] = enter
-                    l[w] = enter
-                    guion = "".join(l)
-                    clear()     
-    elif guion == word:
+    pista = ["-"]*len(word)
+    guion = ''.join(pista)
+    while guion != word:
+        print(guion, end=' ')
+        while True:
+            enter = str(input('\nIngrese una letra: '))
+            if len(enter) == 1:
+                break
+            else: 
+                print('\nsolo se puede ingresar una letra por intento, intentelo de nuevo\n')
+        for i, l in enumerate(word):
+            if l.lower() == enter.lower():
+                pista[i] = l
+                guion = ''.join(pista)
+        clear()
+    else:
         print(guion, end=' ')
         print('Felicidades Ganaste!!')
 
