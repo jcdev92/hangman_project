@@ -14,10 +14,12 @@ def words():
     word = random.choice(palabras)
     pista = ["-"]*len(word)
     guion = ''.join(pista)
+    loose = 'ahorcado'
+    end = ['']
     while guion != word:
-        print(guion, end=' ')
+        print('\n', guion, end=' ')
         while True:
-            enter = str(input('\nIngrese una letra: '))
+            enter = str(input('\nIngrese una letra: \n'))
             if len(enter) == 1:
                 break
             else: 
@@ -26,7 +28,7 @@ def words():
             if l.lower() == enter.lower():
                 pista[i] = l
                 guion = ''.join(pista)
-        clear()
+            clear()
     else:
         print(guion, end=' ')
         print('Felicidades Ganaste!!')
